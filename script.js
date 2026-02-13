@@ -207,12 +207,12 @@ const projectData = {
         title: "HDB Cats Game",
         description: "Working closely with a team of developers to create an engaging 3D tower defense game. This project involved extensive collaboration, asset creation, and gameplay programming. Players defend their HDB estate from waves of challenges while managing resources and upgrades. The game features custom 3D models, particle effects, and a progressive difficulty system.",
         tags: ["Unity", "C#", "Teamwork", "3D Modeling"],
-        link: "https://example.com/hdb-cats", // Replace with your actual link
+        link: "https://youtu.be/JqhD0CI-2BY?si=0MuUfEIeRXEQS2Zm", // Replace with your actual link
         images: [
-            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+1",
-            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+2",
-            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+3",
-            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+4"
+            "Assets/HDBCats-1.png",
+            "Assets/HDBCats-2.png",
+            "Assets/HDBCats-3.png",
+            "Assets/HDBCats-4.png"
         ]
     },
     project2: {
