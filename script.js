@@ -206,8 +206,8 @@ const projectData = {
     project1: {
         title: "HDB Cats Game",
         description: "Working closely with a team of developers to create an engaging 3D tower defense game. This project involved extensive collaboration, asset creation, and gameplay programming. Players defend their HDB estate from waves of challenges while managing resources and upgrades. The game features custom 3D models, particle effects, and a progressive difficulty system.",
-        tags: ["Unity", "C#", "Teamwork", "3D Modeling"],
-        link: "https://youtu.be/JqhD0CI-2BY?si=0MuUfEIeRXEQS2Zm", // Replace with your actual link
+        tags: ["Unity", "C#", "Teamwork"],
+        link: "https://www.youtube.com/watch?v=JqhD0CI-2BY", // Replace with your actual link
         images: [
             "Assets/HDBCats-1.png",
             "Assets/HDBCats-2.png",
@@ -254,7 +254,16 @@ function openGallery(projectId) {
     // Update gallery content
     document.getElementById('galleryTitle').textContent = currentProject.title;
     document.getElementById('galleryDesc').textContent = currentProject.description;
-    document.getElementById('galleryLink').href = currentProject.link;
+    
+    // Update link
+    const galleryLink = document.getElementById('galleryLink');
+    if (currentProject.link && currentProject.link !== '#') {
+        galleryLink.href = currentProject.link;
+        galleryLink.style.display = 'inline-flex';
+        galleryLink.onclick = null; // Remove any blocking onclick handlers
+    } else {
+        galleryLink.style.display = 'none';
+    }
     
     // Update tags
     const tagsContainer = document.getElementById('galleryTags');
