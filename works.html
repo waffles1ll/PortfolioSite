@@ -30,141 +30,148 @@
         <div class="container">
             <h1 class="page-title">My Works</h1>
             <p class="page-description">
-                A collection of projects I've worked on.
+                Click on any project to view the full gallery.
             </p>
 
-            <!-- Filter Buttons
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="design">Design</button>
-            </div> -->
-
-            <!-- Projects Grid -->
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="placeholder-image">Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-description">
-                            A full-stack e-commerce solution with user authentication, 
-                            product management, and payment integration.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
+            <!-- Image Gallery Modal -->
+            <div class="gallery-modal" id="galleryModal">
+                <div class="gallery-overlay" onclick="closeGallery()"></div>
+                <div class="gallery-container">
+                    <button class="gallery-close" onclick="closeGallery()">&times;</button>
+                    
+                    <div class="gallery-content">
+                        <!-- Image Viewer -->
+                        <div class="gallery-viewer">
+                            <button class="gallery-arrow gallery-prev" onclick="changeImage(-1)">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            
+                            <div class="gallery-image-container">
+                                <img id="galleryImage" src="" alt="Project image">
+                                <div class="gallery-counter">
+                                    <span id="currentImage">1</span> / <span id="totalImages">1</span>
+                                </div>
+                            </div>
+                            
+                            <button class="gallery-arrow gallery-next" onclick="changeImage(1)">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        
+                        <!-- Description Section -->
+                        <div class="gallery-description">
+                            <h2 id="galleryTitle">Project Title</h2>
+                            <div class="gallery-tags" id="galleryTags"></div>
+                            <div id="galleryDesc" class="gallery-text">
+                                Project description goes here...
+                            </div>
+                            <a id="galleryLink" href="#" target="_blank" class="gallery-external-link">
+                                Visit Project
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Project 2 -->
-                 
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="placeholder-image">Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Weather Dashboard</h3>
-                        <p class="project-description">
-                            Real-time weather tracking application with interactive maps 
-                            and forecast predictions.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">API</span>
-                            <span class="tag">CSS</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </div>
+            <!-- Featured Projects Grid -->
+            <div class="featured-projects-grid">
                 
-                <!-- Project 3 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="placeholder-image">Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Task Management App</h3>
-                        <p class="project-description">
-                            Collaborative task management tool with real-time updates 
-                            and team collaboration features.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Tailwind</span>
+                <!-- PROJECT 1 TEMPLATE - Copy this entire section for each project -->
+                <div class="featured-project-section">
+                    <div class="project-gallery-card" onclick="openGallery('project1')">
+                        <div class="project-gallery-preview">
+                            <div class="gallery-preview-images">
+                                <img src="https://via.placeholder.com/400x300/6366f1/ffffff?text=HDB+Cats+1" alt="HDB Cats preview">
+                            </div>
+                            <div class="gallery-overlay-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                                <p>Click to View Gallery</p>
+                            </div>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <div class="project-gallery-info">
+                            <h3>HDB Cats Game</h3>
+                            <p>3D tower defense game with team collaboration</p>
+                            <div class="project-mini-tags">
+                                <span class="mini-tag">Unity</span>
+                                <span class="mini-tag">C#</span>
+                                <span class="mini-tag">Teamwork</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- END PROJECT 1 TEMPLATE -->
 
-                <!-- Project 4 -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-image">
-                        <div class="placeholder-image">Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Fitness Tracking App</h3>
-                        <p class="project-description">
-                            Mobile application for tracking workouts, nutrition, 
-                            and fitness goals with social features.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Redux</span>
-                            <span class="tag">Firebase</span>
+                <!-- PROJECT 2 TEMPLATE -->
+                <div class="featured-project-section">
+                    <div class="project-gallery-card" onclick="openGallery('project2')">
+                        <div class="project-gallery-preview">
+                            <div class="gallery-preview-images">
+                                <img src="https://via.placeholder.com/400x300/10b981/ffffff?text=Wildlife+1" alt="Wildlife preview">
+                            </div>
+                            <div class="gallery-overlay-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                                <p>Click to View Gallery</p>
+                            </div>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <div class="project-gallery-info">
+                            <h3>Our Wildlife Our Home</h3>
+                            <p>NParks challenge solution with innovative gameplay</p>
+                            <div class="project-mini-tags">
+                                <span class="mini-tag">Unity</span>
+                                <span class="mini-tag">C#</span>
+                                <span class="mini-tag">Prototyping</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- END PROJECT 2 TEMPLATE -->
 
-                <!-- Project 5 -->
-                <div class="project-card" data-category="design">
-                    <div class="project-image">
-                        <div class="placeholder-image">Design Preview</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Brand Identity Design</h3>
-                        <p class="project-description">
-                            Complete brand identity including logo, color palette, 
-                            and design guidelines for a tech startup.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">Illustrator</span>
-                            <span class="tag">Branding</span>
+                <!-- PROJECT 3 TEMPLATE -->
+                <div class="featured-project-section">
+                    <div class="project-gallery-card" onclick="openGallery('project3')">
+                        <div class="project-gallery-preview">
+                            <div class="gallery-preview-images">
+                                <img src="https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Addams+1" alt="Addams Family preview">
+                            </div>
+                            <div class="gallery-overlay-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                                <p>Click to View Gallery</p>
+                            </div>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
+                        <div class="project-gallery-info">
+                            <h3>The Addams Family Production</h3>
+                            <p>Head of Props and Sets for 6-month theatre production</p>
+                            <div class="project-mini-tags">
+                                <span class="mini-tag">Props Making</span>
+                                <span class="mini-tag">Leadership</span>
+                                <span class="mini-tag">Concept Art</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- END PROJECT 3 TEMPLATE -->
 
-                <!-- Project 6 -->
-                 <section id="view2">
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <div class="placeholder-image">Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Portfolio CMS</h3>
-                        <p class="project-description">
-                            Content management system for photographers and artists 
-                            to showcase their work.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">Strapi</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </div>
-                </section>
             </div>
         </div>
     </section>

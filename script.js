@@ -196,3 +196,126 @@ window.addEventListener('scroll', () => {
 
 // Add transition to navbar
 navbar.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+
+// ============================================
+// IMAGE GALLERY FUNCTIONALITY
+// ============================================
+
+// Project data - Add your images and descriptions here
+const projectData = {
+    project1: {
+        title: "HDB Cats Game",
+        description: "Working closely with a team of developers to create an engaging 3D tower defense game. This project involved extensive collaboration, asset creation, and gameplay programming. Players defend their HDB estate from waves of challenges while managing resources and upgrades. The game features custom 3D models, particle effects, and a progressive difficulty system.",
+        tags: ["Unity", "C#", "Teamwork", "3D Modeling"],
+        link: "https://example.com/hdb-cats", // Replace with your actual link
+        images: [
+            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+1",
+            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+2",
+            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+3",
+            "https://via.placeholder.com/800x600/6366f1/ffffff?text=HDB+Cats+Screenshot+4"
+        ]
+    },
+    project2: {
+        title: "Our Wildlife Our Home",
+        description: "Developing an innovative solution for NParks' challenge to educate the public about wildlife conservation. This interactive experience combines educational content with engaging gameplay mechanics. Players learn about Singapore's biodiversity while completing challenges and missions. Features include AR integration, mini-games, and a comprehensive wildlife database.",
+        tags: ["Unity", "C#", "Prototyping", "AR"],
+        link: "https://example.com/wildlife", // Replace with your actual link
+        images: [
+            "https://via.placeholder.com/800x600/10b981/ffffff?text=Wildlife+Screenshot+1",
+            "https://via.placeholder.com/800x600/10b981/ffffff?text=Wildlife+Screenshot+2",
+            "https://via.placeholder.com/800x600/10b981/ffffff?text=Wildlife+Screenshot+3"
+        ]
+    },
+    project3: {
+        title: "The Addams Family Production",
+        description: "Served as Head of Props and Sets for a 6-month theatre production of The Addams Family. Led a team of artists and craftspeople in creating over 100 unique props and set pieces. Responsibilities included concept design, budgeting, material sourcing, construction supervision, and maintaining the artistic vision throughout the production run. Successfully delivered on time and under budget while maintaining high quality standards.",
+        tags: ["Props and Sets Making", "Leadership", "Concept Art", "Theatre Production"],
+        link: "https://example.com/addams-family", // Replace with your actual link
+        images: [
+            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Set+1",
+            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Props+2",
+            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Behind+Scenes+3",
+            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Final+4",
+            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Details+5"
+        ]
+    }
+    // Add project4, project5, etc. here following the same format
+};
+
+let currentProject = null;
+let currentImageIndex = 0;
+
+function openGallery(projectId) {
+    currentProject = projectData[projectId];
+    if (!currentProject) return;
+    
+    currentImageIndex = 0;
+    
+    // Update gallery content
+    document.getElementById('galleryTitle').textContent = currentProject.title;
+    document.getElementById('galleryDesc').textContent = currentProject.description;
+    document.getElementById('galleryLink').href = currentProject.link;
+    
+    // Update tags
+    const tagsContainer = document.getElementById('galleryTags');
+    tagsContainer.innerHTML = '';
+    currentProject.tags.forEach(tag => {
+        const tagSpan = document.createElement('span');
+        tagSpan.className = 'gallery-tag';
+        tagSpan.textContent = tag;
+        tagsContainer.appendChild(tagSpan);
+    });
+    
+    // Update image
+    updateGalleryImage();
+    
+    // Show modal
+    const modal = document.getElementById('galleryModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeGallery() {
+    const modal = document.getElementById('galleryModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+function changeImage(direction) {
+    if (!currentProject) return;
+    
+    currentImageIndex += direction;
+    
+    // Loop around
+    if (currentImageIndex < 0) {
+        currentImageIndex = currentProject.images.length - 1;
+    } else if (currentImageIndex >= currentProject.images.length) {
+        currentImageIndex = 0;
+    }
+    
+    updateGalleryImage();
+}
+
+function updateGalleryImage() {
+    if (!currentProject) return;
+    
+    const img = document.getElementById('galleryImage');
+    img.src = currentProject.images[currentImageIndex];
+    
+    document.getElementById('currentImage').textContent = currentImageIndex + 1;
+    document.getElementById('totalImages').textContent = currentProject.images.length;
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('galleryModal');
+    if (!modal.classList.contains('active')) return;
+    
+    if (e.key === 'ArrowLeft') {
+        changeImage(-1);
+    } else if (e.key === 'ArrowRight') {
+        changeImage(1);
+    } else if (e.key === 'Escape') {
+        closeGallery();
+    }
+});
