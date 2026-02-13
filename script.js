@@ -31,7 +31,12 @@ if (navToggle) {
         });
     });
 }
-
+const skillCards = document.querySelectorAll('.card');
+skillCards.forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('active');
+    });
+});
 // Resume Download Function
 const downloadBtn = document.getElementById('downloadResume');
 
