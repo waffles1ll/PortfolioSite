@@ -47,8 +47,8 @@ if (downloadBtn) {
         
         // Set the path to your resume PDF
         // Make sure to place your resume.pdf in the same directory
-        link.href = 'resume.pdf';
-        link.download = 'Your_Name_Resume.pdf';
+        link.href = 'Assets/ZYI Resume.pdf';
+        link.download = 'ZYI Resume.pdf';
         
         // Trigger the download
         document.body.appendChild(link);
@@ -56,7 +56,7 @@ if (downloadBtn) {
         document.body.removeChild(link);
         
         // Optional: Show a message
-        alert('Resume download started! If the download doesn\'t start, please make sure resume.pdf is in your project folder.');
+        //alert('Resume download started! If the download doesn\'t start, please contact Zyi by email.');
     });
 }
 
@@ -221,26 +221,84 @@ const projectData = {
     },
     project2: {
         title: "Our Wildlife Our Home",
-        description: "Developing an innovative solution for NParks' challenge to educate the public about wildlife conservation. This interactive experience combines educational content with engaging gameplay mechanics. Players learn about Singapore's biodiversity while completing challenges and missions. Features include AR integration, mini-games, and a comprehensive wildlife database.",
+        description: "Developing an innovative solution for NParks' challenge to educate the public about wildlife conservation. This interactive experience combines educational content with engaging personalised storytelling.",
         tags: ["Unity", "C#", "Prototyping", "AR"],
         link: "https://example.com/wildlife", // Replace with your actual link
         images: [
-            "https://via.placeholder.com/800x600/10b981/ffffff?text=Wildlife+Screenshot+1",
-            "https://via.placeholder.com/800x600/10b981/ffffff?text=Wildlife+Screenshot+2",
-            "https://via.placeholder.com/800x600/10b981/ffffff?text=Wildlife+Screenshot+3"
+            "Assets/ILAB-1.jpg",
+            "Assets/ILAB-2.jpg"
         ]
     },
     project3: {
         title: "The Addams Family Production",
-        description: "Served as Head of Props and Sets for a 6-month theatre production of The Addams Family. Led a team of artists and craftspeople in creating over 100 unique props and set pieces. Responsibilities included concept design, budgeting, material sourcing, construction supervision, and maintaining the artistic vision throughout the production run. Successfully delivered on time and under budget while maintaining high quality standards.",
+        description: "Served as Head of Props and Sets for a 6-month theatre production of The Addams Family. Led a team of artists and craftspeople in creating over 70 unique props and set pieces. Responsibilities included concept design, budgeting, material sourcing, construction supervision, and maintaining the artistic vision throughout the production run.",
         tags: ["Props and Sets Making", "Leadership", "Concept Art", "Theatre Production"],
-        link: "https://example.com/addams-family", // Replace with your actual link
+        link: "https://youtu.be/xikMBV_u2Kk?si=E32z3W1I6YrfqZfl", // Replace with your actual link
         images: [
-            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Set+1",
-            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Props+2",
-            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Behind+Scenes+3",
-            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Final+4",
-            "https://via.placeholder.com/800x600/8b5cf6/ffffff?text=Addams+Details+5"
+            "Assets/AddamsFamily-1.jpg",
+            "Assets/AddamsFamily-2.png",
+            "Assets/AddamsFamily-3.jpg",
+            "Assets/AddamsFamily-4.jpg"
+        ]
+    },
+    project4: {
+        title: "Get Out! VR Game",
+        description: "Solo developed a VR simulation game where you are met with a naughty cat moving in to your new house.",
+        tags: ["C#", "VR", "Unity"],
+        link: "https://youtu.be/4wDtzc5_moM", // Replace with your actual link
+        images: [
+            "Assets/GetOut-1.png",
+            "Assets/GetOut-2.png",
+            "Assets/GetOut-3.png",
+            "Assets/GetOut-4.png",
+            "Assets/GetOut-5.png"
+        ]
+    },
+    project5: {
+        title: "3D Character Animation",
+        description: "Created basic character idle, walk and jump animations for games in Maya.",
+        tags: ["Animation", "Maya", "3D"],
+        link: "https://www.artstation.com/artwork/8Brb3m", // Replace with your actual link
+        images: [
+            "Assets/3DAnimation-1.png",
+            "Assets/3DAnimation-2.png",
+            "Assets/3DAnimation-3.png",
+            "Assets/3DAnimation-4.png"
+        ]
+    },
+    project6: {
+        title: "Space Strider! Game",
+        description: "An endless runner where you collect as many stars as possible. Solo developed in Unreal Engine, coded with visual scripting.",
+        tags: ["Visual Scripting", "Unreal", "3D"],
+        link: "https://youtu.be/PsRJ4c4UuEY?si=nU_t2CoZODmiIHDg", // Replace with your actual link
+        images: [
+            "Assets/SpaceStrider-1.png",
+            "Assets/SpaceStrider-2.png",
+            "Assets/SpaceStrider-3.png",
+            "Assets/SpaceStrider-4.png",
+        ]
+    },
+    project7: {
+        title: "2D Animation Reel",
+        description: "Collection of my 2D animations from 2021-2024",
+        tags: ["Animation", "Procreate", "2D", "Adobe Animate"],
+        link: "https://youtu.be/Aza819Uu9Uk", // Replace with your actual link
+        images: [
+            "Assets/Animation-1.png",
+            "Assets/Animation-2.gif",
+            "Assets/Animation-3.png",
+            "Assets/Animation-4.png",
+            "Assets/Animation-5.png"
+        ]
+    },
+    project8: {
+        title: "KOPI Production",
+        description: "Served as Head of Props and Sets, as well as Assistant Stage Manager during this 4-month production. Lead a 20+ team of craftsmen, crew and actors.",
+        tags: ["Props", "Teamwork", "Leadership", "Theatre Production"],
+        link: "https://youtu.be/b_Iv1LbBlN4?si=eRhcTu84UmlU_dDt", // Replace with your actual link
+        images: [
+            "Assets/KOPI-1.jpg",
+            "Assets/KOPI-2.jpg"
         ]
     }
     // Add project4, project5, etc. here following the same format
@@ -308,15 +366,43 @@ function changeImage(direction) {
     
     updateGalleryImage();
 }
-
 function updateGalleryImage() {
     if (!currentProject) return;
     
     const img = document.getElementById('galleryImage');
+    const linkButton = document.getElementById('galleryLink');
+    const hasValidLink = currentProject.link && currentProject.link !== '#' && currentProject.link !== '';
+    
+    // Function to ensure button stays visible
+    const ensureButtonVisible = () => {
+        if (hasValidLink) {
+            linkButton.style.display = 'inline-flex';
+            linkButton.style.visibility = 'visible';
+            linkButton.style.opacity = '1';
+            linkButton.style.position = 'relative';
+            linkButton.style.pointerEvents = 'auto';
+            void linkButton.offsetHeight; // Force reflow
+            console.log('Button visibility forced after image load');
+        }
+    };
+    
+    // Set image source
     img.src = currentProject.images[currentImageIndex];
     
+    // Ensure button is visible immediately
+    ensureButtonVisible();
+    
+    // Also ensure button is visible after image loads (in case of layout shift)
+    img.onload = () => {
+        setTimeout(ensureButtonVisible, 50); // Small delay to ensure layout is complete
+    };
+    
+    // Update counters
     document.getElementById('currentImage').textContent = currentImageIndex + 1;
     document.getElementById('totalImages').textContent = currentProject.images.length;
+    
+    // Debug log
+    console.log('Image updated to index:', currentImageIndex, '| Button visible:', hasValidLink);
 }
 
 // Keyboard navigation

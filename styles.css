@@ -6,9 +6,9 @@
 }
 
 :root {
-    --primary-color: #6366f1;
-    --primary-dark: #4f46e5;
-    --secondary-color: #10b981;
+    --primary-color: #e2d704;
+    --primary-dark: #dde546;
+    --secondary-color: #09d5c8;
     --text-primary: #1f2937;
     --text-secondary: #6b7280;
     --bg-primary: #ffffff;
@@ -96,7 +96,7 @@ body {
 /* Hero Section */
 .hero {
     padding: 100px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2c2c2c 0%, hsl(51, 100%, 48%) 100%);
     color: white;
 }
 
@@ -310,12 +310,24 @@ body {
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
 }
+.skill-category-big-three {
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
 
 .category-title {
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
     color: var(--primary-color);
 }
+
+.big3skillscategory-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
 
 .skills-grid {
     display: grid;
@@ -594,11 +606,22 @@ body {
     align-items: center;
     text-align:center;
     display: flex;
-    background-image: url('Assets/GameDev.jpg');
-    background-color: var(--border-color);
+    flex-direction: column;
+    /*background-image: url('Assets/GameDev.jpg');*/
+    /*background-color: var(--border-color);
     background-size: cover;
     border-radius: 50px; /* Rounded corners with 50px radius */
 }
+
+.card .front img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+
 
 .card .back {
   width: 100%;
@@ -617,7 +640,7 @@ body {
 
 
 .card .back {
-  background: linear-gradient(to bottom, #ffffff76, #62626254); /* Linear gradient background */
+  /*background: linear-gradient(to bottom, #ffffff76, #62626254); /* Linear gradient background */
   opacity: 0.8; /* 80% opacity */
   border-radius: 50px; /* Rounded corners with 50px radius */
   transform: rotateY(180deg);
@@ -647,7 +670,7 @@ body {
   margin-left: 50px;
   margin-right: 50px;
   font-family: 'Funnel Display', Arial, sans-serif; /* You can choose any font you prefer */
-  margin-top: 70%;
+  margin-top: -20%;
 }
 
 .card h1 {
@@ -723,7 +746,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(99, 102, 241, 0.9);
+    background: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -862,6 +885,8 @@ body {
     justify-content: center;
     background: #000;
     padding: 1rem;
+    min-height: 0; /* Prevent flex overflow issues */
+    overflow: hidden; /* Prevent content from pushing arrows */
 }
 
 .gallery-image-container {
@@ -871,13 +896,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 0; /* Prevent flex overflow issues */
 }
 
 .gallery-image-container img {
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: 0.5rem;
+    display: block; /* Prevent inline spacing issues */
 }
 
 .gallery-counter {
@@ -933,12 +962,14 @@ body {
     background: var(--bg-primary);
     display: flex;
     flex-direction: column;
+    min-height: 0; /* Prevent flex overflow */
 }
 
 .gallery-description h2 {
     font-size: 2rem;
     color: var(--text-primary);
     margin-bottom: 1rem;
+    flex-shrink: 0; /* Don't let title shrink */
 }
 
 .gallery-tags {
@@ -946,6 +977,7 @@ body {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
+    flex-shrink: 0; /* Don't let tags shrink */
 }
 
 .gallery-tag {
@@ -960,12 +992,14 @@ body {
 .gallery-text {
     color: var(--text-secondary);
     line-height: 1.8;
-    margin-bottom: 2rem;
-    flex-grow: 1;
+    margin-bottom: 1.5rem;
+    flex: 1 1 auto; /* Allow to grow but also shrink if needed */
+    overflow-y: auto; /* Make only text scrollable */
+    min-height: 0; /* Prevent flex overflow */
 }
 
 .gallery-external-link {
-    display: inline-flex;
+    display: inline-flex !important; /* Force visibility with !important */
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
@@ -976,6 +1010,8 @@ body {
     font-weight: 600;
     transition: all 0.3s ease;
     align-self: flex-start;
+    flex-shrink: 0; /* Never let button shrink */
+    margin-top: auto; /* Push to bottom if space available */
 }
 
 .gallery-external-link:hover {
@@ -1049,4 +1085,3 @@ body {
         height: 220px;
     }
 }
-
