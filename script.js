@@ -130,16 +130,20 @@ if (contactForm) {
     });
 }
 
-// Smooth Scroll for anchor links
+// Smooth Scroll for anchor links (only for internal page anchors)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+        const href = this.getAttribute('href');
+        // Only apply smooth scroll to actual anchor links, not placeholder "#" links
+        if (href && href !== '#' && href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
     });
 });
